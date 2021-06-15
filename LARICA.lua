@@ -165,7 +165,7 @@ io.popen("mkdir File_Bot")
 io.popen("cd File_Bot && rm -rf commands.lua.1") 
 io.popen("cd File_Bot && rm -rf commands.lua.2") 
 io.popen("cd File_Bot && rm -rf commands.lua.3") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/MarjonaTEAM/Files_Marjona/master/File_Bot/commands.lua") 
+io.popen("cd File_Bot && wget https://raw.githubusercontent.com/MarjonaTEAM/Files_Marjona/main/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -1064,7 +1064,7 @@ end
 
 if text == 'تحديث السورس ⌁ 🕷️' and DevMarjonaW(msg) then 
 os.execute('rm -rf Marjona.lua')
-os.execute('wget https://raw.githubusercontent.com/MarjonaTEAM/Marjona/master/Marjona.lua')
+os.execute('wget https://raw.githubusercontent.com/MarjonaTEAM/Marjona/main/Marjona.lua')
 send(msg.chat_id_, msg.id_,' ⌁ 🦇 تم تحديث السورس \n ⌁ 🦇 لديك اخر اصدار لسورس مارجونا\n ⌁ 🦇 الاصدار ↺ { 1.3v}')
 dofile('Marjona.lua')  
 end
@@ -2315,7 +2315,7 @@ end
 return false
 end
 os.execute('rm -rf Marjona.lua')
-os.execute('wget https://raw.githubusercontent.com/MarjonaTEAM/Marjona/master/Marjona.lua')
+os.execute('wget https://raw.githubusercontent.com/MarjonaTEAM/Marjona/main/Marjona.lua')
 send(msg.chat_id_, msg.id_,' ⌁ 🦇 تم تحديث السورس \n ⌁ 🦇 لديك اخر اصدار لسورس مارجونا\n ⌁ 🦇 الاصدار ↺ { 1.3v}')
 dofile('Marjona.lua')  
 end
@@ -5713,7 +5713,7 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Sakl:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n ⌁ ?? العضو ↺ ['..data.first_name_..'](t.me/'..(data.username_ or 'MarjonaTEAM')..')'
+usertext = '\n ⌁ 🦇 العضو ↺ ['..data.first_name_..'](t.me/'..(data.username_ or 'MarjonaTEAM')..')'
 local  statuss  = '\n ⌁ 🦇 تم رفع المتهم صخل بالكروب\n ⌁ 🦇 الان اصبح صخل الكروب'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
@@ -5910,7 +5910,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' ⌁ 🦇 لا تستطيع استخدام البوت \n  ⌁ 🦇 يرجى الاشتراك بالقناه اولا \n  ⌁ 🦇 اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ⌁ 🦇 لا تستطيع استخدام البوت \n  ⌁ ?? يرجى الاشتراك بالقناه اولا \n  ⌁ 🦇 اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -10748,7 +10748,7 @@ Text = [[
 ⌁ 🕷️ نسبه الحب
 ⌁ 🕷️ نسبه الرجوله
 ⌁ 🕷️ نسبه الكره
-⌁ ??️ نسبه الانوثه
+⌁ 🕷️ نسبه الانوثه
 ⌁ 🕷️ نسبه الغباء
 ━═━═━═━═━═━═━═━═━━═━═━═━
 ↺ .[  ⌯ 𝐋𝐀𝐑𝐈𝐂𝐀 ✞ 𝐓𝐄𝐀𝐌 ||🦇 ꙰ ](t.me/MarjonaTEAM)-
