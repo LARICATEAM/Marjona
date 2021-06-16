@@ -376,7 +376,7 @@ ID="InputMessageAudio",
 audio_ = GetInputFile(audio),
 duration_ = "",
 title_ = title or "",
-performer_ = "سورس بروكز الرسمي",
+performer_ = "سورس مارجونا الرسمي",
 caption_ = caption or ""
 }},func or dl_cb,nil)
 end
@@ -6200,7 +6200,7 @@ database:set(bot_id.."Marjona:Left:Bot"..msg.chat_id_,true)
 send(msg.chat_id_, msg.id_, "⌔︙تم تعطيل مغادرة البوت") 
 return false 
 end
-if text == (database:get(bot_id.."Marjona:Name:Bot") or "بروكز") then
+if text == (database:get(bot_id.."Marjona:Name:Bot") or "مارجونا") then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6210,7 +6210,7 @@ send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة
 end
 return false
 end
-Namebot = (database:get(bot_id.."Marjona:Name:Bot") or "بروكز")
+Namebot = (database:get(bot_id.."Marjona:Name:Bot") or "مارجونا")
 local namebot = {
 "عمري فداك "..Namebot.. " كول حب ",
 "كول حبيبي ؟ اني "..Namebot,
@@ -6229,7 +6229,7 @@ return false
 end
 
 if text == "بوت" then
-Namebot = (database:get(bot_id.."Marjona:Name:Bot") or "بروكز")
+Namebot = (database:get(bot_id.."Marjona:Name:Bot") or "مارجونا")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" or text == "حذف اسم البوت" then 
@@ -7966,94 +7966,7 @@ local Name = '⌔︙مطور البوت  : [ '..UserName..' ]'
 sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
 end
 end
-if text == 'الملفات' and DevMarjona(msg) then
-t = '⌔︙جميع الملفات : \n — — — — — — — — — \n'
-i = 0
-for v in io.popen('ls Marjona_Files'):lines() do
-if v:match(".lua$") then
-i = i + 1
-t = t..i..'*~ '..v..'*\n'
-end
-end
-send(msg.chat_id_, msg.id_,t)
-end
-if text == "متجر الملفات" or text == 'المتجر' then
-if DevMarjona(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/Marjona/files_Marjona/main/getfile.json")
-if res == 200 then
-local Get_info, res = pcall(JSON.decode,Get_Files);
-vardump(res.plugins_)
-if Get_info then
-local TextS = "\n⌔︙اهلا بك في متجر ملفات بروكز\n⌔︙يوجد في المتجر ملف الردود\n⌔︙يتم ادراج الملفات في التحديثات القادمه \n — — — — — — — — — \n"
-local TextE = "\n — — — — — — — — — \n⌔︙تدل علامة (✔) الملف مفعل\n".."⌔︙تدل علامة (✖) الملف معطل\n"
-local NumFile = 0
-for name,Info in pairs(res.plugins_) do
-local Check_File_is_Found = io.open("Marjona_Files/"..name,"r")
-if Check_File_is_Found then
-io.close(Check_File_is_Found)
-CeckFile = "(✔)"
-else
-CeckFile = "(✖)"
-end
-NumFile = NumFile + 1
-TextS = TextS..'*'..NumFile.."-›* {`"..name..'`} -› '..CeckFile..'\n[-  About to the file]('..Info..')\n'
-end
-send(msg.chat_id_, msg.id_,TextS..TextE) 
-end
-else
-send(msg.chat_id_, msg.id_,"⌔︙ لا يوجد اتصال من ال api \n") 
-end
-return false
-end
-end
 
-if text and text:match("^(تعطيل ملف) (.*)(.lua)$") and DevMarjona(msg) then
-local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
-local file = name_t[2]..'.lua'
-local file_bot = io.open("Marjona_Files/"..file,"r")
-if file_bot then
-io.close(file_bot)
-t = "*⌔︙ الملف -› {"..file.."}\n⌔︙ تم تعطيله وحذفه بنجاح \n✓*"
-else
-t = "*⌔︙ بالتاكيد تم تعطيل وحذف ملف -› {"..file.."} \n✓*"
-end
-local json_file, res = https.request("https://raw.githubusercontent.com/Marjona/files_Marjona/main/files_Marjona/"..file)
-if res == 200 then
-os.execute("rm -fr Marjona_Files/"..file)
-send(msg.chat_id_, msg.id_,t) 
-dofile('Marjona.lua')  
-else
-send(msg.chat_id_, msg.id_,"*⌔︙ عذرا لا يوجد هاكذا ملف في المتجر *\n") 
-end
-return false
-end
-if text and text:match("^(تفعيل ملف) (.*)(.lua)$") and DevMarjona(msg) then
-local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
-local file = name_t[2]..'.lua'
-local file_bot = io.open("Marjona_Files/"..file,"r")
-if file_bot then
-io.close(file_bot)
-t = "*⌔︙ بالتاكيد تم تنزيل وتفعيل ملف -› {"..file.."} \n✓*"
-else
-t = "*⌔︙ الملف -› {"..file.."}\n⌔︙ تم تنزيله وتفعيله بنجاح \n*"
-end
-local json_file, res = https.request("https://raw.githubusercontent.com/Marjona/files_Marjona/main/files_Marjona/"..file)
-if res == 200 then
-local chek = io.open("Marjona_Files/"..file,'w+')
-chek:write(json_file)
-chek:close()
-send(msg.chat_id_, msg.id_,t) 
-dofile('Marjona.lua')  
-else
-send(msg.chat_id_, msg.id_,"*⌔︙ عذرا لا يوجد هاكذا ملف في المتجر *\n") 
-end
-return false
-end
-if text == "مسح جميع الملفات" and DevMarjona(msg) then
-os.execute("rm -fr Marjona_Files/*")
-send(msg.chat_id_,msg.id_,"⌔︙تم حذف جميع الملفات")
-return false
-end
 if text == 'نقل الاحصائيات' and DevMarjona(msg) then
 local Users = database:smembers('Marjona:'..bot_id.."userss")
 local Groups = database:smembers('Marjona:'..bot_id..'groups') 
@@ -8115,7 +8028,7 @@ Text = [[
      
 [⌔︙ 𝗆𝖺𝗋𝗃𝗈𝗇𝖺 𝖲𝗈𝗎𝗋𝖼𝖾](http://t.me/MarjonaSoUrcE)
      
-[⌔︙ ToolS 𝗆𝖺𝗋𝗃𝗈𝗇𝖺](https://t.me/vBrOokS)
+[⌔︙ ToolS 𝗆𝖺𝗋𝗃𝗈𝗇𝖺](https://t.me/XMarjonaX)
      
 [⌔︙ 𝗌𝗈𝗎𝗋𝖼𝖾 𝖽𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝗋](http://t.me/llH30)
      
@@ -8365,9 +8278,9 @@ if text == 'م5' and DevBot(msg) then
 Text = [[
 ⌔︙اوامر المطور الاساسي  
  — — — — — — — — — 
-⌔︙تحديث 
-⌔︙الملفات 
-⌔︙المتجر 
+
+
+
 ⌔︙حظر عام
 ⌔︙الغاء العام
 ⌔︙المطورين
@@ -9212,7 +9125,7 @@ if NewCmmd then
 data.message_.content_.text_ = (NewCmmd or data.message_.content_.text_)
 end
 end
-local Name_Bot = (database:get(bot_id.."Marjona:Name:Bot") or "بروكز")
+local Name_Bot = (database:get(bot_id.."Marjona:Name:Bot") or "مارجونا")
 if not database:get(bot_id.."Marjona:Fun_Bots"..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
