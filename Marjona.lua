@@ -6809,14 +6809,14 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'✫: عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ✫: قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عذࢪا عليڪ الاشتࢪاڪ في قناه البوت. \n• اشتࢪڪ هنا عمࢪي ←  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 database:setex(bot_id.."Marjona:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_,240,true)  
 local Text= [[
-✫: ارسل الان النص
-✫: يمكنك اضافه :
+• ارسل الان النص
+• يمكنك اضافه :
 - `#username` > اسم المستخدم
 - `#msgs` > عدد رسائل المستخدم
 - `#photos` > عدد صور المستخدم
@@ -6831,23 +6831,103 @@ local Text= [[
 send(msg.chat_id_, msg.id_,Text)
 return false  
 end 
+if text == 'تغير الايدي' and Owner(msg) then 
+local List = {
+[[
+◜⛓️ِ𝗨َِS𝗘ِr #username 🕷 .  
+◜⛓️ِ𝗠ِsِG  #msgs 🕸  .
+◜⛓️ِ𝗦َ𝗧 #stast 🕷 .
+◜⛓️ِ𝗜ِd  #id 🕸 .
+]],
+[[
+☁️ . USERNAME . #username
+☁️ . STAST . #stast
+☁️ . ID . #id
+☁️ . MSGS . #msgs
+
+
+]],
+[[
+. : 𝖴𝖲𝖤𝖱 #username .
+. : 𝖬𝖲𝖦 #msgs .
+. : 𝖲𝖳𝖠 #stast .
+. : 𝖨𝖣  #id .
+]],
+[[
+Ϯ : Msgs : #msgs.
+Ϯ : ID : #id.
+Ϯ : Stast : #stast.
+Ϯ : UserName : #username.
+]],
+[[
+˛ 𝗎!𝗌 : #username ٰ 🎀.
+˛ 𝗆!𝗀 #msgs .
+˛ 𝗌!𝗍 : #stast .
+˛𝗂!𝖽 : #id  ٰ 🎀 .
+]],
+[[
+◟𝗎ْ!𝖲 #username  .٠
+◟𝖬ْ!𝖦 #msgs   .٠
+◟𝖲ْ!𝖳 #stast 📍.  
+◟𝖨ْ!𝖽 #id  📍 .٠
+]],
+[[
+- 𝙪𝙚𝙨 †: #username 🦂 .
+ - 𝙢𝙨𝙜 † : #msgs  .
+ - 𝙨𝙩𝙖 †: #stast   .
+- 𝙞𝙙 †: #id 🦂 .
+]],
+[[
+𝗎𝗌𝖾𝗋𝗇𝖺𝗆𝖾 : #username
+𝗌𝗍𝖺𝗍𝗌 : #stast  
+𝗆𝗌𝗀𝗌 : #msgs
+𝗂𝖣 : #id
+]],
+[[
+☁️ . USERNAME . #username 
+☁️ . STAST . #stast 
+☁️ . ID . #id 
+☁️ . MSGS . #msgs 
+]],
+[[
+˛ 𝗎!𝗌 : #username ٰ⛓️ '.
+˛ 𝗆!𝗀 #msgs .
+˛ 𝗌!𝗍 : #stast .
+˛𝗂!𝖽 : #id ⛓️ '.
+]],
+[[
+𝗎𝗌𝖾𝗋𝗇𝖺𝗆𝖾 : #username
+𝗌𝗍𝖺𝗍𝗌 : #stast  
+𝗆𝗌𝗀𝗌 : #msgs
+𝗂𝖣 : #id
+]],
+[[
+- UsEr🇺🇸 ꙰ #username
+- StA🇺🇸 ꙰   #msgs
+- MsGs🇺🇸 ꙰ #stast
+- ID🇺🇸 ꙰  #id
+]]}
+local Text_Rand = List[math.random(#List)]
+database:set(bot_id.."Marjona:Klesh:Id:Bot"..msg.chat_id_,Text_Rand)
+send(msg.chat_id_, msg.id_,'• تم تغير الايدي ارسل ايدي لرؤيته')
+end
 if text == 'حذف الايدي' or text == 'مسح الايدي' then
 if Owner(msg) then
 database:del(bot_id.."Marjona:Klesh:Id:Bot"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, '✫: تم ازالة كليشة الايدي ')
+send(msg.chat_id_, msg.id_, '• تم ازالة كليشة الايدي ')
 end
 return false  
 end 
 
 if database:get(bot_id.."Marjona:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-send(msg.chat_id_, msg.id_,"✫: تم الغاء تعين الايدي") 
+send(msg.chat_id_, msg.id_,"• تم الغاء تعين الايدي") 
 database:del(bot_id.."Marjona:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
 return false  
 end 
 database:del(bot_id.."Marjona:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
 database:set(bot_id.."Marjona:Klesh:Id:Bot"..msg.chat_id_,text:match("(.*)"))
-send(msg.chat_id_, msg.id_,'✫: تم تعين الايدي')    
+send(msg.chat_id_, msg.id_,'• تم تعين الايدي')    
 end
 
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'Marjona:Lock:ID:Bot'..msg.chat_id_) then
